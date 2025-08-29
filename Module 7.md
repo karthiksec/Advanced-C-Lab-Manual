@@ -135,15 +135,39 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+int main() {
+    FILE *p;
+    char name[50];
 
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    p = fopen(name, "w");
+
+    if (p == NULL) {
+        printf("Error in creating file.\n");
+        return 1;
+    }
+
+    printf("File '%s' created and opened successfully.\n", name);
+
+    fclose(p);
+
+    printf("File closed successfully.\n");
+
+    return 0;
+}
+
+```
 
 Output:
 
 
-//paste your output here
+<img width="1713" height="790" alt="image" src="https://github.com/user-attachments/assets/795791d4-4a5c-4a7e-97ed-d3cdf9d20ce6" />
+
 
 
 
