@@ -16,15 +16,31 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    const char *words[] = {
+        "zero","one","two","three","four","five","six","seven","eight","nine"
+    };
+
+    if (scanf("%d", &n) != 1) return 0;
+
+    if (n >= 0 && n <= 9)
+        printf("%s\n", words[n]);
+    else
+        printf("out of range\n");
+
+    return 0;
+}
+
 
 
 
 
 Output:
 
-
-//paste your output here
+<img width="1881" height="918" alt="image" src="https://github.com/user-attachments/assets/d5d4b7d6-3cdb-4d2b-a09a-d2b35ef38cb0" />
 
 
 
@@ -46,16 +62,35 @@ Algorithm:
 6.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main(void) {
+    char ch;
+    int freq[10] = {0};   // array to hold frequency of digits 0-9
 
+    // Read characters until EOF (Ctrl+D in Linux/Mac, Ctrl+Z in Windows)
+    while ((ch = getchar()) != EOF) {
+        if (ch >= '0' && ch <= '3') {
+            freq[ch - '0']++;
+        }
+    }
+
+    // Print frequencies for 0-9, space-separated
+    for (int i = 0; i < 10; i++) {
+        printf("%d", freq[i]);
+        if (i < 9) printf(" ");
+    }
+    printf("\n");
+
+    return 0;
+}
 
 
 
 Output:
 
+<img width="1917" height="920" alt="image" src="https://github.com/user-attachments/assets/4cea6afa-7486-4af8-84fd-b91fe52db15b" />
 
-//paste your output here
 
 
 
@@ -84,15 +119,61 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+// Swap two characters
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+// Function to generate permutations in lex order
+void permute(char *str, int l, int r) {
+    if (l == r) {
+        printf("%s\n", str);
+        return;
+    }
+
+    for (int i = l; i <= r; i++) {
+        // Skip duplicates
+        if (i != l && str[i] == str[l]) continue;
+
+        swap(&str[l], &str[i]);
+        permute(str, l + 1, r);
+        swap(&str[l], &str[i]); // backtrack
+    }
+}
+
+// Compare function for qsort
+int cmpfunc(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
+}
+
+int main() {
+    char str[100];
+    scanf("%s", str);
+
+    int n = strlen(str);
+
+    // Sort string first to ensure lexicographical order
+    qsort(str, n, sizeof(char), cmpfunc);
+
+    permute(str, 0, n - 1);
+
+    return 0;
+}
+
 
 
 
 
 Output:
 
+<img width="1907" height="918" alt="image" src="https://github.com/user-attachments/assets/2996cf39-fefb-4f47-81b6-369b70174b5e" />
 
-//paste your output here
 
 
 
@@ -116,8 +197,22 @@ Algorithm:
 7.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
 
 
 
@@ -125,8 +220,7 @@ Program:
 Output:
 
 
-//paste your output here
-
+<img width="1845" height="898" alt="image" src="https://github.com/user-attachments/assets/65f639d8-a276-4776-9a02-0673d09fa184" />
 
 
 
@@ -156,15 +250,29 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+#include <stdio.h>
 
+// Function with no arguments but returns square
+int square() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    return n * n;
+}
+
+int main() {
+    int result;
+    result = square();  // call function
+    printf("Square = %d\n", result);
+    return 0;
+}
 
 
 
 Output:
 
 
-//paste your output here
+<img width="1890" height="912" alt="image" src="https://github.com/user-attachments/assets/949604be-5fd2-4b48-8096-87c4ab7ad2b5" />
 
 
 
