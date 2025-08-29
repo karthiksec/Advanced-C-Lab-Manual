@@ -9,13 +9,58 @@ Algorithm:
 4.	Call the search function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    int data;
+    struct Node *next;
+};
 
+struct Node* createNode(int data) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+int search(struct Node *head, int key) {
+    struct Node *temp = head;
+    while (temp != NULL) {
+        if (temp->data == key)
+            return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
+int main() {
+    struct Node *head = NULL, *second = NULL, *third = NULL;
+    int key;
+
+    head = createNode(10);
+    second = createNode(20);
+    third = createNode(30);
+
+    head->next = second;
+    second->next = third;
+
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+
+    if (search(head, key))
+        printf("Element %d found in the linked list.\n", key);
+    else
+        printf("Element %d not found in the linked list.\n", key);
+
+    return 0;
+}
+
+```
 Output:
 
-//paste your output here
-
+<img width="1764" height="790" alt="image" src="https://github.com/user-attachments/assets/2b2bfb70-410a-48a5-9258-7747f5d75eda" />
 
 
 Result:
