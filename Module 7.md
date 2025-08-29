@@ -73,16 +73,35 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
+#include <stdio.h>
+struct numbers {
+    int a;
+    int b;
+};
+struct numbers add(struct numbers n);
 
-//type your code here
+int main() {
+    struct numbers n, result;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &n.a, &n.b);    result = add(n);
+    printf("Sum = %d\n", result.a);
+    return 0;
+}
+struct numbers add(struct numbers n) {
+    struct numbers temp;
+    temp.a = n.a + n.b;  
+    temp.b = 0;          
+    return temp;
+}
 
-
-
+```
 
 Output:
 
 
-//paste your output here
+<img width="1701" height="788" alt="image" src="https://github.com/user-attachments/assets/e301f3e8-87e8-45a1-bb6a-b0f2b97f5ebd" />
+
 
 
 
