@@ -78,14 +78,65 @@ Algorithm:
 4.	Call the insert function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    char data;
+    struct Node *next;
+};
 
+struct Node* insert(struct Node *head, char value) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        struct Node *temp = head;
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+    }
+    return head;
+}
+
+void display(struct Node *head) {
+    struct Node *temp = head;
+    printf("Linked List: ");
+    while (temp != NULL) {
+        printf("%c -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+    int n, i;
+    char ch;
+
+    printf("Enter number of nodes to insert: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("Enter data for node %d: ", i + 1);
+        scanf(" %c", &ch);
+        head = insert(head, ch);
+    }
+
+    display(head);
+
+    return 0;
+}
+
+```
 Output:
 
-//paste your output here
+<img width="1919" height="793" alt="image" src="https://github.com/user-attachments/assets/906a9c27-4d8d-4e63-9f88-5e9f2add2929" />
 
- 
 Result:
 Thus, the program to insert a node in a linked list is verified successfully.
 
