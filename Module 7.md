@@ -206,16 +206,48 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+int main() {
+    FILE *p;
+    char name[50], text[100];
+    int num, i;
 
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    printf("Enter number of strings to insert: ");
+    scanf("%d", &num);
+
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error in creating file.\n");
+        return 1;
+    }
+
+    printf("File '%s' opened successfully.\n", name);
+
+    for (i = 0; i < num; i++) {
+        printf("Enter string %d: ", i + 1);
+        scanf("%s", text);  
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+
+    printf("Data added successfully.\n");
+
+    return 0;
+}
+
+```
 
 Output:
 
 
-//paste your output here
-
+<img width="1919" height="820" alt="image" src="https://github.com/user-attachments/assets/456249f2-609e-4b94-b99d-7f1e51ed476b" />
 
 
 
